@@ -4,13 +4,16 @@ import java.util.concurrent.CompletableFuture;
 
 public class Freiheit3 {
 
-	public static void mani(String[] args) {
-		CompletableFuture<Void> future = CompletableFuture.runAsync(()->System.out.println("Hello"));
+	public static void main(String[] args) {
+//		CompletableFuture<Void> future = CompletableFuture.runAsync(()->System.out.println("Hello"));
 //		future.t
 //		future.ta
+		int[] A = new int[1];
+		int res = getMinSteps(A);
+		System.out.println(res);
 	}
 	
-	public int getMinSteps(int[] A) {
+	public static int getMinSteps(int[] A) {
 		float sum = 0;
 		int avg = 0, max = Integer.MIN_VALUE;
 		for(int element : A) {

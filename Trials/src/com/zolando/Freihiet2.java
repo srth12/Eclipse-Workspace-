@@ -8,8 +8,9 @@ public class Freihiet2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] A = new int[] {1, 8, -3, 0, 1, 3, -2, 4, 5};
-		int sol = solution(6, A);
+		int k = 2147483647;
+		int[] A = new int[] {2,2,2,k};
+		int sol = solution(4, A);
 		System.out.println(sol);
 	}
 	

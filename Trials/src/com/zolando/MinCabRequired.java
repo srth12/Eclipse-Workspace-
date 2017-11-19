@@ -3,7 +3,10 @@ package com.zolando;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
 
 public class MinCabRequired {
@@ -22,7 +25,7 @@ public class MinCabRequired {
 		cab2.setEndTime("13:00");
 		cab3.setStartTime("13:00");
 		cab3.setEndTime("14:00");
-		cab4.setStartTime("13:30");
+		cab4.setStartTime("13:29");
 		cab4.setEndTime("16:00");
 		cab5.setStartTime("13:00");
 		cab5.setEndTime("13:30");
@@ -61,13 +64,23 @@ public class MinCabRequired {
 		int totalCabsReq=1;
 		for(int i =0;i<bookedTimings.size();i++) {
 			int cabsOverlappedForI = 1;
-			Stack<String> stack = new Stack<>();
-			stack.push(bookedTimings.get(i).getEndTime());
-			for(int j = i+1; j< bookedTimings.size(); j++) {
-				if(bookedTimings.get(j).getEndTime().compareTo(bookedTimings.get(j).getStartTime()) > 0) {
-						cabsOverlappedForI++;
+			Queue<String> stack = new PriorityQueue<>();
+			stack.add(bookedTimings.get(i).getEndTime());
+//			for(int j = i+1; j< bookedTimings.size(); j++) {
+//				if(bookedTimings.get(j).getEndTime().compareTo(bookedTimings.get(j).getStartTime()) > 0) {
+//						cabsOverlappedForI++;
+//				}else {
+//					break;
+//				}
+//			}
+			int count = i+1;
+			while(!stack.isEmpty() && count < bookedTimings.size()) {
+				if(stack.peek().compareTo(bookedTimings.get(count).getStartTime()) > 0) {
+					stack.add(bookedTimings.get(count++).getEndTime());
+					cabsOverlappedForI = Math.max(cabsOverlappedForI, stack.size());
+					
 				}else {
-					break;
+					stack.poll();
 				}
 			}
 			totalCabsReq = Math.max(totalCabsReq, cabsOverlappedForI);
