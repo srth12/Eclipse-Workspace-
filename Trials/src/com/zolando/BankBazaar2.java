@@ -43,6 +43,9 @@ public class BankBazaar2 {
 	static int ans[] = new int[1001];
     /*
      * Complete the function below.
+     * n - number of people to cover the umbrellas
+     * pi- no. of people that can shelter in that umbrella
+     * return - minimum no. of umbrella should by to cover exactly n persons(not less, not more)
      */
     static int getUmbrellas(int n, int[] p) {
         if(n==0)
