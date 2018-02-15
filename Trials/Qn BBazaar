@@ -1,0 +1,45 @@
+There was a long paragraph but by mistake all the spaces between words are lost. Given a list of dictionary words how you are going to make paragraph again.
+
+
+The
+There was
+
+add 1st chara to List
+while(List != null){
+for each( parag in List){
+   newParag = getNewSentenceStartsWith(parag);// gets the next word
+  newList.add(newParag);
+
+}
+
+List = newList;
+}
+There wasal
+------
+
+public String parseParagraph(String input){
+
+List<ParsedParag> tempResults = new ArrayList<>();
+
+    tempResults.add(new ParsedParag(input.charAt(0)));
+    
+    while(tempResults.size() != 0){
+       for(ParsedParag parsedSentence: tempResults){
+      
+          ParsedParag newParsedParag = getNewSentenceStartsWith(input, parsedSentence.getLength());
+          if(!newParsedParag.getParag().equals(""){
+          newList.add(newParsedParag);
+          }
+      
+       }
+       tempResults = newList;
+    }
+
+ 
+}
+public ParsedParag getNewSentenceStartsWith(
+
+Class ParsedParag{
+ int count;
+ String parag;
+}
