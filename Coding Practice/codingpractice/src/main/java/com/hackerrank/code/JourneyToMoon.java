@@ -33,6 +33,10 @@ public class JourneyToMoon {
             }
         }
         int totalComp = 0;
+        // we can optimize the below code by applying :
+        // - for the number of ways selecting two persons from different components, we subtract the number of ways of selecting
+        // two persons from the same component from the total numbers of ways of selecting two persons i
+        // ie, nC2 - sum(MiC2 ) ; where nC2 is total and Mi is astronaughts from same country. nC2 == n*(n-1)/2
         for (int i = 0; i < bucket.size(); i++) {
             int temp = bucket.get(i).size();
             for (int j = i+1; j < bucket.size(); j++) {
