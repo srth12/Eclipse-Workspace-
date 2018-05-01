@@ -65,3 +65,9 @@ Coding Practice/codingpractice/.DS_Store
 Coding Practice/.DS_Store
 .DS_Store
 .DS_Store
+fishy/gradlew
+fishy/gradlew.bat
+*.jar
+*.bin
+fishy/.gradle/buildOutputCleanup/cache.properties
+fishy/gradle/wrapper/gradle-wrapper.properties

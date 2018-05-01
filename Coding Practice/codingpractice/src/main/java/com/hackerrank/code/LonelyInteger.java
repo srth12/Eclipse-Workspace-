@@ -1,5 +1,7 @@
 package com.hackerrank.code;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -19,7 +21,22 @@ public class LonelyInteger {
         return result;
     }
 
+    static long aVeryBigSum(int n, long[] ar) {
+        /*
+         * Write your code here.
+         */
+
+//        LocalDateTime t = new LocalDateTime(1523718907817l);
+
+        return Arrays.stream(ar).sum();
+
+    }
+
     public static void main(String[] args) {
+
+        Timestamp s = new Timestamp(1523718907817l);
+        System.out.println(s.toString());
+
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int[] a = new int[n];
