@@ -1,8 +1,6 @@
-package com.hackerrank.code;
+package com.hackerrank.code.graph;
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class TopViewOfTree {
 

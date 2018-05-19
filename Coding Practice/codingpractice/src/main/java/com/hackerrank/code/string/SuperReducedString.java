@@ -1,4 +1,4 @@
-package com.hackerrank.code;
+package com.hackerrank.code.string;
 
 import java.util.Scanner;
 import java.util.stream.Stream;

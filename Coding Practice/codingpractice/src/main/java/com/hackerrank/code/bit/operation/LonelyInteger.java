@@ -1,4 +1,4 @@
-package com.hackerrank.code;
+package com.hackerrank.code.bit.operation;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

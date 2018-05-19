@@ -1,4 +1,4 @@
-package com.hackerrank.code;
+package com.hackerrank.code.graph;
 
 import java.util.*;
 
