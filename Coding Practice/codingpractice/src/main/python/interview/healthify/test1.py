@@ -30,7 +30,7 @@ def get_next_n_slots(week_config, current_time, n=10):
                 result = {}
                 start = current_time + timedelta(hours=int(startArray[0])) + timedelta(minutes=int(startArray[1]))
                 end = current_time + timedelta(hours=int(endArray[0])) + timedelta(minutes=int(endArray[1]))
-                if start > end:
+                if start >= end:         #assuming atleast take 1 minute to complete the slot
                     end = end + timedelta(days=1)
                 result["start_time"] = start.strftime(format)
                 result["end_time"] = end.strftime(format)
@@ -134,21 +134,56 @@ OUT_3 = [
 
 INP_4 = [
     [# Monday
-        {"start_time": "21:30", "end_time": "06:30"}],
+        {"start_time": "21:30", "end_time": "06:30"}],[],
     [# Tuesday
-        {"start_time": "21:00", "end_time": "21:00"}]
+        {"start_time": "01:00", "end_time": "00:00"}],
+    [],[],[],[]
 ]
 
-OUT_4 = [{"start_time": "2017-01-01 21:30:00", "end_time": "2017-01-02 06:30:00"},
-         {"start_time": "2017-01-02 21:00:00", "end_time": "2017-01-02 21:00:00"},
-         {'start_time': '2017-01-03 21:30:00', 'end_time': '2017-01-04 06:30:00'},
-         {'start_time': '2017-01-04 21:00:00', 'end_time': '2017-01-04 21:00:00'},
-         {'start_time': '2017-01-05 21:30:00', 'end_time': '2017-01-06 06:30:00'},
-         {'start_time': '2017-01-06 21:00:00', 'end_time': '2017-01-06 21:00:00'},
-         {'start_time': '2017-01-07 21:30:00', 'end_time': '2017-01-08 06:30:00'},
-         {'start_time': '2017-01-08 21:00:00', 'end_time': '2017-01-08 21:00:00'},
-         {'start_time': '2017-01-09 21:30:00', 'end_time': '2017-01-10 06:30:00'},
-         {'start_time': '2017-01-10 21:00:00', 'end_time': '2017-01-10 21:00:00'}
+OUT_4 = [{'start_time': '2017-01-01 21:30:00', 'end_time': '2017-01-02 06:30:00'},
+         {'start_time': '2017-01-03 01:00:00', 'end_time': '2017-01-04 00:00:00'},
+         {'start_time': '2017-01-08 21:30:00', 'end_time': '2017-01-09 06:30:00'},
+         {'start_time': '2017-01-10 01:00:00', 'end_time': '2017-01-11 00:00:00'},
+         {'start_time': '2017-01-15 21:30:00', 'end_time': '2017-01-16 06:30:00'},
+         {'start_time': '2017-01-17 01:00:00', 'end_time': '2017-01-18 00:00:00'},
+         {'start_time': '2017-01-22 21:30:00', 'end_time': '2017-01-23 06:30:00'},
+         {'start_time': '2017-01-24 01:00:00', 'end_time': '2017-01-25 00:00:00'},
+         {'start_time': '2017-01-29 21:30:00', 'end_time': '2017-01-30 06:30:00'},
+         {'start_time': '2017-01-31 01:00:00', 'end_time': '2017-02-01 00:00:00'}
+         ]
+
+INP_5 = [[],
+    [# Tuesday
+        {"start_time": "21:30", "end_time": "22:30"}],[],[],[],[],[]
+]
+
+OUT_5 = [{"start_time": "2017-01-02 21:30:00", "end_time": "2017-01-02 22:30:00"},
+         {"start_time": "2017-01-09 21:30:00", "end_time": "2017-01-09 22:30:00"},
+         {'start_time': '2017-01-16 21:30:00', 'end_time': '2017-01-16 22:30:00'},
+         {'start_time': '2017-01-23 21:30:00', 'end_time': '2017-01-23 22:30:00'},
+         {'start_time': '2017-01-30 21:30:00', 'end_time': '2017-01-30 22:30:00'},
+         {'start_time': '2017-02-06 21:30:00', 'end_time': '2017-02-06 22:30:00'},
+         {'start_time': '2017-02-13 21:30:00', 'end_time': '2017-02-13 22:30:00'},
+         {'start_time': '2017-02-20 21:30:00', 'end_time': '2017-02-20 22:30:00'},
+         {'start_time': '2017-02-27 21:30:00', 'end_time': '2017-02-27 22:30:00'},
+         {'start_time': '2017-03-06 21:30:00', 'end_time': '2017-03-06 22:30:00'}
+         ]
+
+INP_6 = [[],[],[],[],[],[],
+         [#Sunday
+             {"start_time": "21:30", "end_time": "21:30"}]
+         ]
+
+OUT_6 = [{'start_time': '2017-01-07 21:30:00', 'end_time': '2017-01-08 21:30:00'},
+         {'start_time': '2017-01-14 21:30:00', 'end_time': '2017-01-15 21:30:00'},
+         {'start_time': '2017-01-21 21:30:00', 'end_time': '2017-01-22 21:30:00'},
+         {'start_time': '2017-01-28 21:30:00', 'end_time': '2017-01-29 21:30:00'},
+         {'start_time': '2017-02-04 21:30:00', 'end_time': '2017-02-05 21:30:00'},
+         {'start_time': '2017-02-11 21:30:00', 'end_time': '2017-02-12 21:30:00'},
+         {'start_time': '2017-02-18 21:30:00', 'end_time': '2017-02-19 21:30:00'},
+         {'start_time': '2017-02-25 21:30:00', 'end_time': '2017-02-26 21:30:00'},
+         {'start_time': '2017-03-04 21:30:00', 'end_time': '2017-03-05 21:30:00'},
+         {'start_time': '2017-03-11 21:30:00', 'end_time': '2017-03-12 21:30:00'}
          ]
 
 SAMPLE_INPUT_OUTPUTS = [
@@ -156,6 +191,8 @@ SAMPLE_INPUT_OUTPUTS = [
     (INP_2, OUT_2),
     (INP_3, OUT_3),
     (INP_4, OUT_4),
+    (INP_5, OUT_5),
+    (INP_6, OUT_6)
 ]
 
 
