@@ -23,7 +23,7 @@ public class RankOfAString {
             int n = words[i].length();
             int count = 0;
             for (int j = 0; j < n; j++) {
-                int lessThan = 1;
+                int lessThan = 0;
                 String word = words[i];
                 int[] freqOfDuplicates = new int[26];
                 for (int k = j + 1; k < n; k++) {
@@ -31,7 +31,7 @@ public class RankOfAString {
                         lessThan += 1;
                     }
                 }
-                for (int p = 0; p < word.length(); p++) {
+                for (int p = j ; p < word.length(); p++) {
                     freqOfDuplicates[word.charAt(p) - 'a']++;
                 }
 
