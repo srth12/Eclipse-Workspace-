@@ -19,9 +19,10 @@ public class RankOfAString {
 
         int[] results = new int[words.length];
 
+
         for (int i = 0; i < words.length; i++) {
             int n = words[i].length();
-            int count = 0;
+            long count = 0;
             for (int j = 0; j < n; j++) {
                 int lessThan = 0;
                 String word = words[i];
@@ -39,10 +40,11 @@ public class RankOfAString {
                 for (int dup: freqOfDuplicates){
                     factOfDuplicates *= factorial(dup);
                 }
-                count += ( factorial(n - j - 1) * lessThan) / factOfDuplicates;
+                count += ( factorial(n - j - 1) * lessThan ) / factOfDuplicates;
 
             }
-            results[i] = count;
+            int module = 1000000007;
+            results[i] = (int) count % module;
             System.out.println(count);
         }
 
@@ -82,12 +84,30 @@ public class RankOfAString {
         scanner.close();
     }
 
-    static int factorial(int n) {
-        int result = 1, i;
+    static long factorial(int n) {
+        long result = 1, i;
 
+        int module = 1000000007;
         for (i=2; i<=n; i++) {
-            result *= i;
+            result = (result * i) % module;;
+            result = result;
         }
         return result;
+    }
+
+    static int modInverse(int a, int n)
+    {
+        int t =0, newt = 1, r = n, newr = a;
+        int quotient = 0;
+        while (newr != 0) {
+            quotient = r / newr;
+            t = newr;
+            newt = t - quotient * newt;
+            r = newr;
+            newr = r - quotient * newr;
+        }
+        if (r > 1)  return -1;
+        if (t < 0)  t = t + n;
+        return t;
     }
 }
