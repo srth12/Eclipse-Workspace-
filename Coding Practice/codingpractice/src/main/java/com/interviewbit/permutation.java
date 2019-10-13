@@ -8,7 +8,7 @@ import java.util.List;
 //Not working
 public class permutation {
 
-    public static List<List<Integer>> permute(List<Integer> A){
+    /*public static List<List<Integer>> permute(List<Integer> A){
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         List<Integer> curr = new ArrayList<>();
         permuteHelper(result, curr, A);
@@ -34,11 +34,11 @@ public class permutation {
             permuteHelper(result, curr, prefix);
         }
         return null;
-    }
+    }*/
 
     public static void main(String[] args) {
         List<Integer> A = new ArrayList<>(Arrays.asList(1, 2, 3));
-        List<List<Integer>> result = permute(A);
-        System.out.println(result);
+//        List<List<Integer>> result = permute(A);
+//        System.out.println(result);
     }
 }
