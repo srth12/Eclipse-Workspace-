@@ -1,4 +1,4 @@
-package com.interviewbit;
+package com.interviewbit.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
