@@ -8,11 +8,11 @@ public class ThreadPoolExec {
         ThreadFactory threadFactory = new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
-                return null;
+                return new Thread(r, "thread-name");
             }
         };
         MyTask task = new MyTask();
-        ExecutorService executors = Executors.newCachedThreadPool();
+        ExecutorService executors = Executors.newCachedThreadPool(threadFactory);
         executors.execute(task);
     }
 }
