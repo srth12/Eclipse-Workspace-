@@ -71,3 +71,4 @@ fishy/gradlew.bat
 *.bin
 fishy/.gradle/buildOutputCleanup/cache.properties
 fishy/gradle/wrapper/gradle-wrapper.properties
+.DS_Store
