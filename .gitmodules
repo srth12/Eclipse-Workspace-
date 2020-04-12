@@ -1,0 +1,3 @@
+[submodule "python-coding-challenge"]
+	path = python-coding-challenge
+	url = git@github.com:srth12/python-code-challenge-ebot.git
