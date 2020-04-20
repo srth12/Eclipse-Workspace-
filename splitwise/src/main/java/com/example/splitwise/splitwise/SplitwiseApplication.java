@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class SplitwiseApplication {
@@ -36,6 +37,14 @@ public class SplitwiseApplication {
 		expenseManager.addExpense(totalAmount, contribution, type, paidBy);
 		expenseManager.showBalance(paidBy);
 		expenseManager.userSpend(paidBy);
+
+		System.out.println("Reead input tst, enter a space seperated full name:");
+		Scanner scanner = new Scanner(System.in);
+		while (true){
+			String next = scanner.nextLine();
+			String[] inputs = next.split(" ");
+			System.out.println("1: " + inputs[0] + " 2: " + inputs[1]);
+		}
 	}
 
 }
