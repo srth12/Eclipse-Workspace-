@@ -1,41 +1,49 @@
 package com.example.udaan.Udaan.controller;
 
+import com.example.udaan.Udaan.dao.user.Driver;
+import com.example.udaan.Udaan.dao.user.User;
+import com.example.udaan.Udaan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
-    /*@Autowired
-    private UserPortal userPortal;
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody User user){
-        return null;
+    public ResponseEntity<User> loginUser(@RequestBody User user) throws Exception {
+
+        try {
+            return ResponseEntity.ok(userService.getUser(user.getUserId()));
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    *//**
-     *
-     * @param user
-     * @return
-     *
-     *//*
-    @PostMapping("/signup")
-    public ResponseEntity<User> registerUser(@RequestBody User user){
-        return ResponseEntity.ok(userPortal.registerUser(user.getName(), user.getUserId()));
+    @PutMapping("/update-user-location")
+    public void updateUserLocation(@RequestBody User user) throws Exception {
+        userService.updateLocation(user);
     }
 
-    @GetMapping("/get-all-users")
-    public ResponseEntity<List<User>> getAllUsers(){
-        return ResponseEntity.ok(userPortal.getAllUsers());
+
+
+    @PostMapping("/rider/signup")
+    public ResponseEntity<Boolean> registerRider(@RequestBody User user){
+        ;
+        return ResponseEntity.ok(userService.registerUser(user.getUserId(), user.getName(),
+                user.getPhoneNo(), ""));
     }
 
-    @GetMapping("/{employeeId}")
-    public ResponseEntity<User> findById(@PathVariable Long employeeId) {
-        return ResponseEntity.ok(null);
-    }*/
-}
+    @PostMapping("/driver/signup")
+    public ResponseEntity<Boolean> registerDriver(@RequestBody Driver user){
+        ;
+        return ResponseEntity.ok(userService.registerUser(user.getUserId(), user.getName(),
+                user.getPhoneNo(), user.getCabNo()));
+    }
+
+
+    }
