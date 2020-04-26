@@ -1,0 +1,1 @@
+{"_zillow_value": "$1,447,191", "_one_year_change": "3.0% ", "_one_year_forcast": "-2.3%", "_market_temperature": "Cool", "_price_sqft": "$1,108", "_median_listing_price": "$1,310,500", "_median_sale_price": "$1,310,500", "_avg_days_on_market": null, "_negative_equity": "2.6%", "_delinquency": "0.2%", "_rent_list_price": "$4,500", "_rent_sqft": "$4.37"}

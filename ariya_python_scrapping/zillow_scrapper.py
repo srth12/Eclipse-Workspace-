@@ -7,6 +7,7 @@ import ssl
 import urllib.parse
 import urllib.request
 import re
+import os
 
 user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'
 values = {'name': 'Michael Foord',
@@ -47,7 +48,7 @@ class HomePriceScrapper:
         process_sections = ["Market Overview", "Market Health", "Rentals", "Listings and Sales"]
         homescrapper.get_yoy_change()
 
-        [homescrapper.process_market_health(process_section) for process_section in process_sections]
+        homescrapper.process_market_health(process_sections)
         homescrapper.get_all_nearby_region_href()
         homescrapper.write_data_as_json(location)
         # homescrapper._homevalue.__str__()
@@ -101,17 +102,19 @@ class HomePriceScrapper:
             self._homevalue._price_sqft = input[AttributeEnum.PRICE_SQFT.value]
 
 
-    def process_market_health(self, process_section):
-        parent = self.page_soup.find("div", {"data-label": process_section}).parent
+    def process_market_health(self, process_sections):
+
         market_health_dict = dict()
-        for li in parent.findAll("li"):
-            value_span = li.find("span", {"class": "value"}, recursive=False)
-            key_span = li.find("span", {"class": "info zsg-fineprint"})
-            if value_span and key_span:
-                value = value_span.text.strip()
-                key =key_span.find(text=True).strip()
-                print(" key :{}, value:{}".format(key, value))
-                market_health_dict[key] = value
+        for process_section in process_sections:
+            parent = self.page_soup.find("div", {"data-label": process_section}).parent
+            for li in parent.findAll("li"):
+                value_span = li.find("span", {"class": "value"}, recursive=False)
+                key_span = li.find("span", {"class": "info zsg-fineprint"})
+                if value_span and key_span:
+                    value = value_span.text.strip()
+                    key =key_span.find(text=True).strip()
+                    print(" key :{}, value:{}".format(key, value))
+                    market_health_dict[key] = value
         print("***** dict:{}".format(market_health_dict))
         self.set_market_overview_items(market_health_dict)
 
@@ -128,8 +131,10 @@ class HomePriceScrapper:
         return neibhouring_href
 
     def write_data_as_json(self, location):
+        if not os.path.exists('./data'):
+            os.makedirs('./data')
         json = self._homevalue.get_as_json()
-        with open("demofile.txt", "w") as fp:
+        with open("./data/demofile.txt", "w") as fp:
             fp.write(json)
 
 
