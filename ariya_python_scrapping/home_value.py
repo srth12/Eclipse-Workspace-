@@ -1,6 +1,9 @@
 import json
 
 class HomeValue:
+    '''
+    The scrapped data will be stored in this object instances
+    '''
 
     def __init__(self):
         self._zillow_value = None
