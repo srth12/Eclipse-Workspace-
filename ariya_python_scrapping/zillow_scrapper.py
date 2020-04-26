@@ -2,12 +2,12 @@
 from bs4 import BeautifulSoup as soup  # HTML data structure
 from home_value import HomeValue
 from key_enum import AttributeEnum
-import requests
 import ssl
 import urllib.parse
 import urllib.request
 import re
 import os
+import sys
 
 user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'
 values = {'name': 'Michael Foord',
@@ -24,7 +24,6 @@ context = ssl._create_unverified_context()
 class HomePriceScrapper:
 
     def __init__(self):
-        # https://www.zillow.com/sanfrancisco-ca/home-values/
 
         self._url_template = "https://www.zillow.com/{location}/home-values/"
         self._base_url = "https://www.zillow.com"
@@ -34,7 +33,7 @@ class HomePriceScrapper:
         self._homevalue = HomeValue()
 
     @staticmethod
-    def get_xyz(location):
+    def scrap_home_values(location):
 
         homescrapper = HomePriceScrapper()
         url = homescrapper._url_template.format(location=location)
@@ -59,6 +58,7 @@ class HomePriceScrapper:
         self.process_market_health(process_sections)
 
         self.write_data_as_json(location)
+        self.write_data_as_csv(location)
 
 
     def get_pattern_with_whitespace(self, dirty_string):
@@ -149,7 +149,23 @@ class HomePriceScrapper:
         with open(full_path, "w") as fp:
             fp.write(json)
 
+    def write_data_as_csv(self, location):
+        if not os.path.exists('./data'):
+            os.makedirs('./data')
+
+        csv_hdr = self._homevalue.get_header_as_csv()
+        csv = self._homevalue.get_as_csv()
+        file_name = 'zillowInsight-{location}.csv'.format(location=location)
+        full_path = "./data/" + file_name
+        with open(full_path, "w") as fp:
+            fp.write(csv_hdr + "\n")
+            fp.write(csv + "\n")
+
 
 
 if __name__ == "__main__":
-    HomePriceScrapper.get_xyz("sanfrancisco-ca")
+    print(sys.argv)
+    if len(sys.argv) < 2:
+        raise Exception("Please provide the location to scrap")
+    else:
+        HomePriceScrapper.scrap_home_values(sys.argv[1])

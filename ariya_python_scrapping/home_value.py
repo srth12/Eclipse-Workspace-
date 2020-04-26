@@ -23,3 +23,21 @@ class HomeValue:
     def get_as_json(self):
 
         return json.dumps(self.__dict__)
+
+    def get_as_csv(self):
+        csv = ""
+        for _, value in self.__dict__.items():
+            csv = csv + "|" + str(value)
+
+        return csv[1:]
+
+    def get_header_as_csv(self):
+        '''
+        Returns the name of attributes seperated by '|'
+        :return: Type: String object
+        '''
+        csv = ""
+        for key, _ in self.__dict__.items():
+            csv = csv + "|" + key
+
+        return csv[1:]
