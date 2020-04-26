@@ -7,3 +7,6 @@ class AttributeEnum(Enum):
     ZHVI = "ZHVI"
     NEGATIVE_EQUITY = "Homes with negative equity"
     DELINQUENCY = "Delinquent on mortgage"
+    RENT_LIST_PRICE = "Rent list price"
+    RENT_PRICE_PER_SQFT = "Rent list price / sq ft"
+    PRICE_SQFT = "Median list price / sq ft"

@@ -1,4 +1,4 @@
-
+import json
 
 class HomeValue:
 
@@ -19,3 +19,7 @@ class HomeValue:
     def __str__(self):
         for att in dir(self):
             print(att, getattr(self, att))
+
+    def get_as_json(self):
+
+        return json.dumps(self.__dict__)

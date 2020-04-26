@@ -43,11 +43,14 @@ class HomePriceScrapper:
         # homevalue._one_year_change = yoy[0]
         # homevalue._one_year_forcast = yoy[1]
         print("***************** try 1 complete ***********")
-        # homevalue._market_temperature = self._homescrapper.get_market_temperature()
-        process_sections = ["Market Overview", "Market Health", "Rentals"]
+        homescrapper.get_market_temperature()
+        process_sections = ["Market Overview", "Market Health", "Rentals", "Listings and Sales"]
+        homescrapper.get_yoy_change()
 
         [homescrapper.process_market_health(process_section) for process_section in process_sections]
-        homescrapper._homevalue.__str__()
+        homescrapper.get_all_nearby_region_href()
+        homescrapper.write_data_as_json(location)
+        # homescrapper._homevalue.__str__()
 
     def get_pattern_with_whitespace(self, dirty_string):
         pattern = re.compile(r'\s*%s\s*' % dirty_string)
@@ -60,46 +63,42 @@ class HomePriceScrapper:
 
             self.page_soup = soup(response.read(), parser_type)
 
-    def get_yoy_change_and_forecast(self):
-        containers = self.page_soup.findAll("li", {"class": "zsg-lg-1-2"})
-        change, forecast = "", ""
+    def get_yoy_change(self):
+        forecast_chart_hdr = self.page_soup.find("header", {"class": "forecast-chart-hdr"})
+        containers = forecast_chart_hdr.findAll("li", {"class": "zsg-lg-1-2"})
         for container in containers:
             if container.span.text == '1-year change':
-                change = container.text
-            else:
-                forecast = container.text
-
-        return (change, forecast)
+                change_perc = container.contents[0]
+                self._homevalue._one_year_change= change_perc
 
     def get_market_temperature(self):
         containers = self.page_soup.findAll("div", {"class": "zsg-h2"})
+        self._homevalue._market_temperature = containers[0].text
         return containers[0].text
 
     def get_sqft_price(self):
         containers = self.page_soup.findAll("span", {"class": "yui_3_18_1_1_1587802421734_2485"})
         return containers[0].text
 
-    def get_median_listing_price(self):
-        containers = self.page_soup.findAll("span", {"class": "yui_3_18_1_1_1587802421734_2495"})
-        return containers[0].text
-
-    def get_median_sale_price(self):
-        containers = self.page_soup.findAll("span", {"class": "yui_3_18_1_1_1587802421734_2504"})
-        return containers[0].text
-
     def set_market_overview_items(self, input):
-        if AttributeEnum.MEDIAN_LIST_PRICE in input:
-            self._homevalue._median_listing_price = input[AttributeEnum.MEDIAN_LIST_PRICE]
-        if AttributeEnum.MEDIAN_SALE_PRICE in input:
-            self._homevalue._median_sale_price = input[AttributeEnum.MEDIAN_LIST_PRICE]
-        if AttributeEnum.YOY_FORECAST in input:
-            self._homevalue._price_sqft = input[AttributeEnum.YOY_FORECAST]
-        if AttributeEnum.ZHVI in input:
-            self._homevalue._zillow_value = input[AttributeEnum.ZHVI]
-        if AttributeEnum.NEGATIVE_EQUITY in input:
-            self._homevalue._negative_equity = input[AttributeEnum.NEGATIVE_EQUITY]
-        if AttributeEnum.DELINQUENCY in input:
-            self._homevalue._delinquency = input[AttributeEnum.DELINQUENCY]
+        if AttributeEnum.MEDIAN_LIST_PRICE.value in input:
+            self._homevalue._median_listing_price = input[AttributeEnum.MEDIAN_LIST_PRICE.value]
+        if AttributeEnum.MEDIAN_SALE_PRICE.value in input:
+            self._homevalue._median_sale_price = input[AttributeEnum.MEDIAN_LIST_PRICE.value]
+        if AttributeEnum.YOY_FORECAST.value in input:
+            self._homevalue._one_year_forcast = input[AttributeEnum.YOY_FORECAST.value]
+        if AttributeEnum.ZHVI.value in input:
+            self._homevalue._zillow_value = input[AttributeEnum.ZHVI.value]
+        if AttributeEnum.NEGATIVE_EQUITY.value in input:
+            self._homevalue._negative_equity = input[AttributeEnum.NEGATIVE_EQUITY.value]
+        if AttributeEnum.DELINQUENCY.value in input:
+            self._homevalue._delinquency = input[AttributeEnum.DELINQUENCY.value]
+        if AttributeEnum.RENT_LIST_PRICE.value in input:
+            self._homevalue._rent_list_price = input[AttributeEnum.RENT_LIST_PRICE.value]
+        if AttributeEnum.RENT_PRICE_PER_SQFT.value in input:
+            self._homevalue._rent_sqft = input[AttributeEnum.RENT_PRICE_PER_SQFT.value]
+        if AttributeEnum.PRICE_SQFT.value in input:
+            self._homevalue._price_sqft = input[AttributeEnum.PRICE_SQFT.value]
 
 
     def process_market_health(self, process_section):
@@ -113,8 +112,25 @@ class HomePriceScrapper:
                 key =key_span.find(text=True).strip()
                 print(" key :{}, value:{}".format(key, value))
                 market_health_dict[key] = value
-
+        print("***** dict:{}".format(market_health_dict))
         self.set_market_overview_items(market_health_dict)
+
+    def get_all_nearby_region_href(self):
+        neibhouring_href = []
+        tables = self.page_soup.findAll("table", {"class": "zsg-table nearby-regions-table"})
+        for table in tables:
+            anchors = table.findAll("a", {"class": "track-ga-event"})
+            for anchor in anchors:
+                attributes = anchor.attrs
+                neibhouring_href.append(attributes['href'])
+
+        print(neibhouring_href)
+        return neibhouring_href
+
+    def write_data_as_json(self, location):
+        json = self._homevalue.get_as_json()
+        with open("demofile.txt", "w") as fp:
+            fp.write(json)
 
 
 
