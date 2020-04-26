@@ -27,6 +27,7 @@ class HomePriceScrapper:
         # https://www.zillow.com/sanfrancisco-ca/home-values/
 
         self._url_template = "https://www.zillow.com/{location}/home-values/"
+        self._base_url = "https://www.zillow.com"
 
         self.context = ssl._create_unverified_context()
 
@@ -39,19 +40,26 @@ class HomePriceScrapper:
         url = homescrapper._url_template.format(location=location)
         print(url)
         homescrapper.set_page_source(url)
-        # print(homescrapper.page_soup)
-        print("***************** url proint complete ***********")
-        # homevalue._one_year_change = yoy[0]
-        # homevalue._one_year_forcast = yoy[1]
-        print("***************** try 1 complete ***********")
-        homescrapper.get_market_temperature()
-        process_sections = ["Market Overview", "Market Health", "Rentals", "Listings and Sales"]
-        homescrapper.get_yoy_change()
+        homescrapper.scrap_and_dump_data(location)
+        nearby_hrefs = homescrapper.get_all_nearby_region_href()
+        for href in nearby_hrefs:
+            nearby_homescrapper = HomePriceScrapper()
+            nearby_url = nearby_homescrapper._base_url + href
+            print("*** nearby rul:{}".format(nearby_url))
+            nearby_homescrapper.set_page_source(nearby_url)
+            location = href.split("/")
+            nearby_homescrapper.scrap_and_dump_data(location[1])
 
-        homescrapper.process_market_health(process_sections)
-        homescrapper.get_all_nearby_region_href()
-        homescrapper.write_data_as_json(location)
-        # homescrapper._homevalue.__str__()
+
+    def scrap_and_dump_data(self, location):
+        self.get_market_temperature()
+        process_sections = ["Market Overview", "Market Health", "Rentals", "Listings and Sales"]
+        self.get_yoy_change()
+
+        self.process_market_health(process_sections)
+
+        self.write_data_as_json(location)
+
 
     def get_pattern_with_whitespace(self, dirty_string):
         pattern = re.compile(r'\s*%s\s*' % dirty_string)
@@ -74,8 +82,8 @@ class HomePriceScrapper:
 
     def get_market_temperature(self):
         containers = self.page_soup.findAll("div", {"class": "zsg-h2"})
-        self._homevalue._market_temperature = containers[0].text
-        return containers[0].text
+        if len(containers) > 0:
+            self._homevalue._market_temperature = containers[0].text
 
     def get_sqft_price(self):
         containers = self.page_soup.findAll("span", {"class": "yui_3_18_1_1_1587802421734_2485"})
@@ -131,10 +139,14 @@ class HomePriceScrapper:
         return neibhouring_href
 
     def write_data_as_json(self, location):
+
         if not os.path.exists('./data'):
             os.makedirs('./data')
+
         json = self._homevalue.get_as_json()
-        with open("./data/demofile.txt", "w") as fp:
+        file_name = 'zillowInsight-{location}.json'.format(location=location)
+        full_path = "./data/" + file_name
+        with open(full_path, "w") as fp:
             fp.write(json)
 
 
