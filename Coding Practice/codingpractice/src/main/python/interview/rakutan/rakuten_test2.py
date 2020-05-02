@@ -1,5 +1,6 @@
 # Minimum number of tree cuts so that each pair of trees alternates between strictly decreasing and strictly increasing
 # url: https://cs.stackexchange.com/questions/116854/minimum-number-of-tree-cuts-so-that-each-pair-of-trees-alternates-between-strict
+# key aesthetically pleasing tree problem
 
 def solution(A):
     # write your code in Python 3.6
