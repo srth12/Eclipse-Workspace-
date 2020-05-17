@@ -13,7 +13,7 @@ import sys
 #
 # Complete the 'priceCheck' function below.
 #
-# The function is expected to return an INTEGER.
+# The function is expected to return an INTEGER which tells the total mismatched price of the products entered
 # The function accepts following parameters:
 #  1. STRING_ARRAY products
 #  2. FLOAT_ARRAY productPrices

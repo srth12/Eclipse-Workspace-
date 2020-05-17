@@ -11,6 +11,7 @@ import sys
 #
 # The function is expected to return an INTEGER_ARRAY.
 # The function accepts STRING_ARRAY inputs as parameter.
+# return the totall common prefix for the inputs
 #
 
 def commonPrefix(inputs):
