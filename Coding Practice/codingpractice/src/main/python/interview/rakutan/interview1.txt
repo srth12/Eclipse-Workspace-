@@ -1,0 +1,35 @@
+# Interview 1
+# q1. Time complexity of Matrix multiplication, Quick sort, merge sort
+# q2.
+# Given a file, containing 1-billion list of image URLs and only one computer with 4 CPU cores, 16Gb of RAM and unlimited disk storage.
+# You have to write a program in order to download all these images from the internet to the disk storage of your computer.
+#
+#
+# function(file_path)
+#
+# /somewhrer/file_path
+# ---
+# http://server1/imagep/image.jpg
+# http://server1/imagep2/image3.jpg
+# http://server1/imagep333/image443.jpg
+#
+#  ============
+#
+  loop = asyncio.get_loop()
+  def function(file_path):
+    # 10M requests per thread => 100 requests subset
+    counter = 0
+    while url_line in read(file_path):
+      result[counter % 100] = url_line
+      if (counter % 100) == 99:
+        loop.submit(process_requests(result))
+
+      counter += 1
+
+  def process_requests(url_list):
+  	for url in url_list:
+      store.save(get_url_content(url))
+
+  def get_url_content(url):
+    with page in HTTPUrl.parse(url_path):
+      return page
