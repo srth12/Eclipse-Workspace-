@@ -1,5 +1,6 @@
 # Sort the log files according to the lexical order if the elements except the idex elements are string
 # else if the elemetns are numeric don't sort and put it at the end.
+# link to similar problem: https://leetcode.com/articles/reorder-log-files/
 
 class Solution(object):
     def reorderLogFiles(self, logs):
