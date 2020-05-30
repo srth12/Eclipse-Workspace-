@@ -6,7 +6,8 @@ import random
 import re
 import sys
 
-# Complete the maxSubsetSum function below.
+# Complete the maxSubsetSum function below. subarray should be non consequitive
+#Time complexity O(2^n)
 def maxSubsetSum(arr):
     max_value = [None for _ in arr]
     if len(arr) == 0:
