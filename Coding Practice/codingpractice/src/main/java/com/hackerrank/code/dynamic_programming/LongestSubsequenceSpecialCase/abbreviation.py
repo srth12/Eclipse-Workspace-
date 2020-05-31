@@ -1,4 +1,9 @@
-
+# You can perform the following operations on the string, :
+#
+# Capitalize zero or more of 's lowercase letters.
+# Delete all of the remaining lowercase letters in .
+# Given two strings,  and , determine if it's possible to make  equal to  as described. If so, print YES on a new line. Otherwise, print NO.
+#NB: can optimise as it takes O(2^n) on worst case
 
 def abbreviation(a, b):
     len_a = len(a)
