@@ -1,0 +1,80 @@
+
+
+
+Given a list of jobs where each job has a start and finish time, and also has profit associated with it, find maximum profit subset of non-overlapping jobs.
+
+For example, consider below jobs with their starting time, finishing time, and associated profit.
+
+Job 1: (0, 6, 60)
+
+
+Job 6: (7, 8, 10)
+
+
+Job 2: (1, 4, 30)
+Job 3: (3, 5, 10)
+
+
+Job 4: (5, 7, 30)
+
+Job 5: (5, 9, 50)
+Job 6: (7, 8, 10)
+
+———————————
+(1,2, 10)
+(2,3, 10)
+(1,4, 30)
+
+
+Public class Job{
+
+
+	p int hash(other){
+		return this.hash(start_time + finish_time)
+}
+
+P int equals(other){
+	//equals of all the fields
+
+}
+
+P int compareTo(Object obj){
+	//cast needed
+	this.compareTO(this.finish_time, obj.finish_time)  //TODO add initial time logic if equals
+}
+
+}
+
+sorted_jobs_with_finish_time = Collections.sort(list_of_jobs)
+
+max_profit_job_lists = List.empty()
+
+
+I = 0
+while(I < list_of_jobs.size())
+	current_element = sorted_jobs_with_finish_time.get(I)
+	//check if the previous elements overlaps
+	if(max_profit_job_lists.size() > 0){
+		last_entry = max_profit_job_lists.get(max_profit_job_lists.size() - 1) //check
+		//non overlapping case
+		if(last_entry. finish_time  <= current_element. start_time)
+			max_profit_job_lists.add(current_element))
+			I ++
+		//overlapping case
+		else{
+			if(last_entry.profit < current_element.profit)
+				max_profit_job_lists.remove(max_profit_job_lists.size() - 1)
+			else:
+				I ++
+}
+
+
+}else{
+	max_profit_job_lists.add(sorted_jobs_with_finish_time.get(I));
+	I ++;
+
+
+}
+
+	//
+}
