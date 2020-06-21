@@ -6,17 +6,9 @@ Given a list of jobs where each job has a start and finish time, and also has pr
 For example, consider below jobs with their starting time, finishing time, and associated profit.
 
 Job 1: (0, 6, 60)
-
-
-Job 6: (7, 8, 10)
-
-
 Job 2: (1, 4, 30)
 Job 3: (3, 5, 10)
-
-
 Job 4: (5, 7, 30)
-
 Job 5: (5, 9, 50)
 Job 6: (7, 8, 10)
 
