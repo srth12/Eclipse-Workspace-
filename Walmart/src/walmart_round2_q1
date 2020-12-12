@@ -1,0 +1,60 @@
+Infinite stream of numbers: largest unique number
+N is any positive integer
+1 8 4 2 8 3 9 4 6 7 8 7 3 5 5 2 1 6 2 7 3 2 7 5 4 6 8 4 9 8 6 7 5 3 9
+
+find the largest number which is unique
+
+Assumption:
+- Assume Infinite memory
+- +ve numbers
+
+O(1) :-
+    DuplicateSet: //only duplicate set
+    OrderedSet -> //will only  contains non duplicate elemments
+      Insert: O(log(n)) ->
+      GetLargestElement: O(1) -> O(n)
+      DeleteElement: O(log(n))
+      ContainsElement: O(log(n))
+
+void printLargestUnique(int currentElement){
+    // B.C - giving -ve values, 0, +ve value, huge number
+
+    // This will handle negative case by skipping this number
+    //as well as the duplicate element
+    if (currentElement < 0 || DuplicateSet.ContainsElement(currentElement) ){
+        sout(OrderedSet.GetLargestElement())
+        return
+    }
+
+
+    if (OrderedSet.ContainsElement(currentElement)){
+        OrderedSet.DeleteElement(currentElement)
+        DuplicateSet.addElement(currentElement)
+        sout(OrderedSet.GetLargestElement())
+        return
+    }
+
+    //If the element is unique
+    OrderedSet.Insert(currentElement)
+    sout(OrderedSet.GetLargestElement())
+}
+
+
+Set<integer> inputSet = HashSet<>()
+void Insert(int value){
+    inputSet.add(value)
+
+}
+void GetLargestElement(int value){
+    largestElement = -1 //assuming only +ve element
+    for(int element: inputSet){
+        if (element > largestElement){
+            largestElement = element
+        }
+    }
+    return largestElement
+}
+void Insert(int value){
+    inputSet.add(value)
+
+}

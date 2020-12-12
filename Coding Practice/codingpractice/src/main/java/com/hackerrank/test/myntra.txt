@@ -1,0 +1,74 @@
+
+
+
+
+We are given an array balls of integers representing balls in a row.
+For each ball, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each ball moves at the same speed.
+Find out the state of the balls after all collisions. If two balls meet, the smaller one will explode. If both are the same size, both will explode. Two balls moving in the same direction will never meet.
+
+
+Input :    [5, 10, -5]
+Output : [5, 10]
+
+[- all are negative] -> o/p same as i/p
+[5, 10, -15] -> [5, -15] -> [-15]   => complexity - O(n)
+[5, -10, 20, -10] -> O(n)
+[all are +ve or -ve] -> O(n)
+[]
+
+
+
+[1,2,3,4,5,6,7,.......,99,-100,-99,-98,-97]
+[1,2,3,4,5, -2, -4, -9]  -> O(n)
+
+
+Def get_resultant_balls_after_collution(input_linked_list):
+     Prev_element = input_linked_list  
+     Current_element = input_linked_list.next()
+     
+     while(Current_element != null):
+if(Current_element.value >0 and Prev_element.value > 0):
+ Prev_element = Current_element
+Current_element = Current_element.next()
+	Else:
+		if(abs(Current_element.value) > abs(Prev_element.value)):
+			Prev_prev_element = Prev_element.prev // 98
+			
+			Prev_prev_element.next = Current_element
+			Current_element.prev = Prev_prev_element
+			
+		
+
+
+
+
+Find the minimum number of operations to convert from one Number A to another B. Only two operations allowed - Double the number/Subtract the number by 1.
+
+
+A -> 2A, A-1 -> …   B
+
+Input - 5, 9
+5 -> 10 -> 9 = output : 2
+
+5, 4 -> 
+5, 7 -> 
+4 ->8 -> 7 
+
+
+5 -> 32    
+5 -> 10 -> 20 ->.40->32 11 steps 
+5->4->8 -> 16 -> 32 4 steps 
+
+5 -> 10 -> 20 -> 40 
+
+4, 31 -> 
+4, 30 
+
+11, 50 -> 10 -> 20 -> 40 -> 80
+Or -> 9 -> 8 -> .. 4 -> 8 -> 16 -> 32 -> … 
+
+
+
+
+
+
