@@ -1,0 +1,80 @@
+
+
+
+
+1 . How Service registry works ?
+2 . DIfference between redis and memcache
+
+
+consumers - A, B
+producer want to send data to A but not to B
+
+
+
+
+
+Requirements:
+1. Pictures/videos?
+2. MVP
+2. less latency
+3.
+
+Since  image/videos
+
+HLD:-
+
+Capacity estimation of rate limiter...
+Requirements:
+ 1. restrict users arfter crertain requests /min
+
+ 2. user logs in
+
+
+ user_id, timestamp, counter
+
+ 2 types of reate limiting - dynamic and static rate limits
+
+ HLD -
+
+ Cache can be used to store this details
+ Availability over Consistancy is more important here.
+
+ Estimation:-
+ How many requests/day ? -
+
+
+
+ user_id, (b1,b2,b3,b4,b5) -  (0,2,0,0,10) -
+ ---------------------------------------------
+
+
+ Tries:
+ APIs:-
+ 1. InsertString(input)  -> up
+ 2. GetMostFrequentWord(substring) -> Returns most frequently used word
+
+
+
+
+
+
+
+ 1 0 2 0 1 0 2
+ o(n)
+
+ 0 ,1
+
+
+ ecommers
+
+ Payment information ->
+ Amazon pay -> credits, expiry time
+
+ coupon_table
+ coupon_code, expiry_time, amount, created_time
+
+ user_coupons
+ user_id, coupon_code
+
+
+
