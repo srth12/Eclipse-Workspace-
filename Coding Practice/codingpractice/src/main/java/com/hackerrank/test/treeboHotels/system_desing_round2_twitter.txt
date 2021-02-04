@@ -1,0 +1,51 @@
+Q. Twitter like system
+
+
+Functional Use cases:
+User should be able to post a tweet - text
+User dashboard
+He should able to see all his tweets
+Home dashboard
+User should be able to see all the tweets user is following - recently posted tweet first
+Add Comments - ASCII
+
+
+Estimation:-
+No of tweets/sec expectation - 10k writes/sec
+1M reads/sec
+Avg length of the tweet - 140character
+Storage requirements for 1 year =  10k writes/sec * 140 * 60 * 60 * 24 * 365 = 44.15 * 10^12 = 44.15PB/year
+10years it will be around 440PB/ 10yr
+
+     Bandwidth req:- 1M * 140 = ~ 140MB/sec
+
+No of systems :- 1TB storage space per system
+ = ~ 44,000 storage systems for 1 year
+
+HLD:
+
+
+LLD:
+Tweets:
+Tweet_id, create_ts, content, user_id
+
+Comments:
+Tweet_id, comment_id, content, posted_ts, updated_ts
+
+User_followers
+User_id, set(follower_id)
+
+A -> get_follower_ids -> insert tweet_ids to follower_timeline
+
+
+User:
+User_id, created_ts, name, last_login_ts, …..
+
+Timeline:-
+User_id, set(tweet_id), timeline_created_ts, last_queried_page, page_size
+
+Public APIs:-
+publishTweet(user_id, created_ts, payload, auth_key)
+getTweets(
+
+
