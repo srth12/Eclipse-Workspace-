@@ -1,0 +1,67 @@
+A city -> a bus network -> `n` number of pick up points.
+
+A, B, C, D
+
+A -> B
+B -> C
+A -> D
+B -> A
+
+
+addARoute(p1, p2)
+
+isConnectivityPresent(p1, p2) -
+
+# cyclic check required
+# {‘source’:set(destinations)}
+#
+-------------------
+# 2nd method: add interconnected destinations also into the set
+
+------------------
+A -> B
+B -> C
+
+A -> D
+B -> A
+
+Class BusRoute:
+	Def __init__(self):
+		Self._route_dict = defaultdict(set)
+
+	Def addARoute(self, source, destination): {A:{B}, B:{C}} -> O(1)
+		Self._route_dict[source].add(destination)
+
+	# a -> c?
+	Def isConnectivityPresent(self, source, destination):
+		Visited_src_set = set()
+		If source not in Self._route_dict:
+			Return False
+
+		Initial_dests = Self._route_dict[source]
+		If destination in Initial_dests:
+			Return True
+
+		Visited_src_set.add(source)
+
+		Intermediate_src_set = Initial_dests
+		# until here O(1)
+		While len(Intermediate_src_set) > 0:
+			Interim_src = Intermediate_src_set.pop() # this is a route - m
+			If destination in Self._route_dict[interim_src]:
+				Return True
+			Visited_src_set.add(interim_src)
+			Unvisited_src_set = Self._route_dict[interim_src].disjoint(Visited_src_set)   # assuming this api works like a - b
+								# n
+
+			Intermediate_src_set.add(Unvisited_src_set)
+
+
+
+		Return False
+
+Worst case:
+A -> n-2 dest
+B -> n-4 dest
+Total = (n-2)(n-4)(n-6)... 1 = O(n^n)
+
