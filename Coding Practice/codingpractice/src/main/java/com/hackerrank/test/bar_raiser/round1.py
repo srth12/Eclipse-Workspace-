@@ -48,7 +48,7 @@ def is_sudoku(arr):
 
     return True
 
-# print(is_sudoku([[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4]]))
+print(is_sudoku([[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4],[1, 2, 3, 4]]))
 
 #print(is_sudoku([[1, 2, 3, 4],[3, 4, 1, 2],[2, 3, 4, 1],[4, 1, 2, 3]]))
 # print(is_sudoku([[]]))
