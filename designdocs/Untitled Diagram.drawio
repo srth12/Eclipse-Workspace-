@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-26T09:23:16.791Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15" etag="WPZSUsNtPx3d_Ie7VBuX" version="14.4.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-26T17:24:07.917Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15" etag="rOxo6MOpnmZrol6fMsG7" version="14.4.7" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1773" dy="1675" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -178,6 +178,49 @@
         </mxCell>
         <mxCell id="jSRzOUqQAlFHEkAHbbM6-30" value="Output As Label" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="jSRzOUqQAlFHEkAHbbM6-24" vertex="1">
           <mxGeometry y="138" width="232" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-0" value="Ref:&amp;nbsp;https://www.geeksforgeeks.org/program-distance-two-points-earth/&lt;br&gt;https://maxmind.github.io/GeoIP2-java/" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-234" y="825" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-1" value="UserLoginRequest" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="640" y="-250" width="232" height="232" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-2" value="username" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-1">
+          <mxGeometry y="26" width="232" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-3" value="ipAddr" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-1">
+          <mxGeometry y="52" width="232" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-4" value="eventTS" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-1">
+          <mxGeometry y="78" width="232" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-8" value="eventTime" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-1">
+          <mxGeometry y="104" width="232" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-5" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-1">
+          <mxGeometry y="124" width="232" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-9" value="UserLoginResponse" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="952" y="-250" width="232" height="232" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-10" value="username" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-9">
+          <mxGeometry y="26" width="232" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-11" value="ipAddr" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-9">
+          <mxGeometry y="52" width="232" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-12" value="eventTS" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-9">
+          <mxGeometry y="78" width="232" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-13" value="eventTime" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-9">
+          <mxGeometry y="104" width="232" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PO-Fg_mPR2vKMHGrFhuC-14" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="PO-Fg_mPR2vKMHGrFhuC-9">
+          <mxGeometry y="124" width="232" height="56" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
